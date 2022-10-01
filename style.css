@@ -66,20 +66,21 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-html {
-	line-height: 1.15;
-	-webkit-text-size-adjust: 100%;
-}
 
-*{
+ *{
 	--verde: #4AC959;
 	--preto: #000000;
 	--branco: #FFFFFF;
 	--preto-azulado: #312F4F;
 	--cinza: #9499B3;
 
-	fonte-padrao:font-family: 'Montserrat', sans-serif;
-	font-rodape:font-family: 'Poppins', sans-serif;
+	--fonte-padrao:'Montserrat', sans-serif;
+	--font-rodape:'Poppins', sans-serif;
+}
+
+html {
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
 }
 
 /* Sections
@@ -414,7 +415,7 @@ select,
 optgroup,
 textarea {
 	color: #404040;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-family: var(--fonte-padrao);
 	font-size: 1rem;
 	line-height: 1.5;
 }
@@ -761,6 +762,12 @@ textarea {
 .post,
 .page {
 	margin: 0 0 1.5em;
+}
+
+.site{
+	max-width:1280px;
+	padding:1rem;
+	margin:auto;
 }
 
 .updated:not(.published) {

@@ -13,17 +13,15 @@
 
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'coopers' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'coopers' ), 'WordPress' );
-				?>
+			<p>
+				Need help?
+			</p>
+			<a target="mailto:coopers@coopers.pro">
+				coopers@coopers.pro
 			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'coopers' ), 'coopers', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
+			<span>
+				© 2022 Coopers. All rights reserved.
+			</span>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
