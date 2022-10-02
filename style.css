@@ -76,6 +76,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 	--fonte-padrao:'Montserrat', sans-serif;
 	--font-rodape:'Poppins', sans-serif;
+
+	--altura-header:4rem;
+	--gap-pagina:1rem;
 }
 
 html {
@@ -414,7 +417,7 @@ input,
 select,
 optgroup,
 textarea {
-	color: #404040;
+	color:var(--preto);
 	font-family: var(--fonte-padrao);
 	font-size: 1rem;
 	line-height: 1.5;
@@ -765,19 +768,13 @@ textarea {
 }
 
 .site{
-	max-width:1280px;
-	padding:1rem;
-	margin:auto;
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-pagina);
 }
 
 .updated:not(.published) {
 	display: none;
-}
-
-.page-content,
-.entry-content,
-.entry-summary {
-	margin: 1.5em 0 0;
 }
 
 .page-links {
@@ -985,3 +982,98 @@ textarea {
 	margin-right: auto;
 	margin-bottom: 1.5em;
 }
+
+/* ESTILOS GERAIS*/
+.container{
+	width: 1280px;
+	margin: auto;
+}
+
+/* HEADER */
+.site-header{
+	padding: 0.5rem;
+	height: var(--altura-header);
+}
+
+.wp-block-group__inner-container{
+	max-width:1280px;
+	margin: auto;
+	padding: 0.5rem;
+}
+
+/* ESTILOS DA PÁGINA */
+.hero{
+	width: 100%;
+	height:100vh;
+	max-height: 734px;
+	background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/BG.png');
+	background-size: contain;
+	background-position: right center;
+	background-repeat: no-repeat;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+
+	.hero__titulo{
+		font-size: 3.75rem;
+		font-weight: 300;
+		color: var(--verde);
+	}
+
+		.hero__titulo strong{
+			font-weight: 800;
+			color: var(--preto);
+		}
+
+	.hero__slogan{
+		font-size: 1.5rem;
+	}
+
+	.hero__botao{
+		width: 18.75rem;
+		height: 4rem;
+		border-radius: 0.625rem;
+
+		background-color: var(--verde);
+		color: var(--branco);
+	}
+
+	.hero__img{
+		height: 482px;
+		width: 443px;
+		object-fit: contain;
+	}
+
+.todolist{
+	color: var(--branco);
+}
+
+.todolist::before{
+	width: 100%;
+	height: 20rem;
+	position: absolute;
+	background-color:var(--preto);
+	content: "";
+	margin-top: -1rem;
+	z-index: -1;
+	transform: rotate(-3deg) scale(1.2);
+	
+}
+
+	.todolist__titulo{
+		font-size: 3.75rem;
+		font-weight: 600;
+
+		text-decoration: underline 2px solid var(--verde);
+
+		text-align: center;
+	}
+
+	.todolist__descricao{
+		width: 37.5rem;
+		text-align: center;
+		margin: auto;
+	}
