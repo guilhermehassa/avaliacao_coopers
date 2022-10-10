@@ -31,8 +31,8 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'coopers' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
+	<header id="masthead" class="header">
+		<div class="container">
 			<?php
 			the_custom_logo();
 			if ( is_front_page() && is_home() ) :

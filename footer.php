@@ -11,15 +11,15 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<p>
+	<footer id="colophon" class="footer">
+		<div class="container">
+			<p class="footer__texto">
 				Need help?
 			</p>
-			<a target="mailto:coopers@coopers.pro">
+			<a href="mailto:coopers@coopers.pro" class="footer__email">
 				coopers@coopers.pro
 			</a>
-			<span>
+			<span class="footer__copyright">
 				© 2022 Coopers. All rights reserved.
 			</span>
 		</div><!-- .site-info -->

@@ -75,7 +75,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	--cinza: #9499B3;
 
 	--fonte-padrao:'Montserrat', sans-serif;
-	--font-rodape:'Poppins', sans-serif;
+	--fonte-rodape:'Poppins', sans-serif;
 
 	--altura-header:4rem;
 	--gap-pagina:1rem;
@@ -94,6 +94,7 @@ html {
  */
 body {
 	margin: 0;
+	overflow-x:hidden;
 }
 
 /**
@@ -432,10 +433,6 @@ h6 {
 	clear: both;
 }
 
-p {
-	margin-bottom: 1.5em;
-}
-
 dfn,
 cite,
 em,
@@ -503,7 +500,7 @@ ol {
 }
 
 ul {
-	list-style: disc;
+	list-style: none;
 }
 
 ol {
@@ -545,112 +542,10 @@ table {
 	width: 100%;
 }
 
-/* Links
---------------------------------------------- */
-a {
-	color: #4169e1;
-}
-
-a:visited {
-	color: #800080;
-}
-
-a:hover,
-a:focus,
-a:active {
-	color: #191970;
-}
-
-a:focus {
-	outline: thin dotted;
-}
-
-a:hover,
-a:active {
-	outline: 0;
-}
 
 /* Forms
 --------------------------------------------- */
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-	border: 1px solid;
-	border-color: #ccc #ccc #bbb;
-	border-radius: 3px;
-	background: #e6e6e6;
-	color: rgba(0, 0, 0, 0.8);
-	line-height: 1;
-	padding: 0.6em 1em 0.4em;
-}
 
-button:hover,
-input[type="button"]:hover,
-input[type="reset"]:hover,
-input[type="submit"]:hover {
-	border-color: #ccc #bbb #aaa;
-}
-
-button:active,
-button:focus,
-input[type="button"]:active,
-input[type="button"]:focus,
-input[type="reset"]:active,
-input[type="reset"]:focus,
-input[type="submit"]:active,
-input[type="submit"]:focus {
-	border-color: #aaa #bbb #bbb;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-input[type="tel"],
-input[type="range"],
-input[type="date"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="color"],
-textarea {
-	color: #666;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	padding: 3px;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-input[type="number"]:focus,
-input[type="tel"]:focus,
-input[type="range"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="week"]:focus,
-input[type="time"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="color"]:focus,
-textarea:focus {
-	color: #111;
-}
-
-select {
-	border: 1px solid #ccc;
-}
-
-textarea {
-	width: 100%;
-}
 
 /*--------------------------------------------------------------
 # Layouts
@@ -760,11 +655,6 @@ textarea {
 --------------------------------------------- */
 .sticky {
 	display: block;
-}
-
-.post,
-.page {
-	margin: 0 0 1.5em;
 }
 
 .site{
@@ -984,22 +874,67 @@ textarea {
 }
 
 /* ESTILOS GERAIS*/
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
 .container{
 	width: 1280px;
 	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 1rem;
 }
 
 /* HEADER */
-.site-header{
+.header{
 	padding: 0.5rem;
 	height: var(--altura-header);
 }
 
-.wp-block-group__inner-container{
-	max-width:1280px;
-	margin: auto;
-	padding: 0.5rem;
+
+/* FOOTER */
+.footer{
+	background-color: var(--preto);
+	font-family: var(--fonte-rodape);
+	color: var(--branco);
+	font-weight: 600;
 }
+
+.footer::before{
+	width: 110vw;
+	height: 7rem;
+	position: absolute;
+	background-color: var(--preto);
+	content: "";
+	margin-top: -3rem;
+	margin-left: -1vw;
+	z-index: -1;
+	transform: rotate(-3deg);
+}
+
+	.footer .container{
+		flex-direction: column;
+		gap: 1.75rem;
+		flex-wrap: nowrap;
+		align-items: center;
+	}
+
+	.footer__texto, .footer__email{
+		font-size: 1.5rem;
+		margin: 0;
+	}
+
+	.footer__email{
+		color: var(--branco) !important;
+		text-decoration: none;
+	}
+
+	.footer__copyright{
+		font-size: 0.875rem;
+	}
 
 /* ESTILOS DA PÁGINA */
 .hero{
@@ -1052,16 +987,21 @@ textarea {
 }
 
 .todolist::before{
-	width: 100%;
-	height: 20rem;
+	width: 110vw;
+	height: 18rem;
 	position: absolute;
 	background-color:var(--preto);
 	content: "";
 	margin-top: -1rem;
+	margin-left: -1vw;
 	z-index: -1;
-	transform: rotate(-3deg) scale(1.2);
+	transform: rotate(-3deg);
 	
 }
+
+	.todolist .container{
+		flex-direction: column;
+	}
 
 	.todolist__titulo{
 		font-size: 3.75rem;
@@ -1077,3 +1017,332 @@ textarea {
 		text-align: center;
 		margin: auto;
 	}
+
+
+.planos{
+	background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/grafismos-lateral-esquerda.png');
+	background-size: contain;
+	background-position: left center;
+	background-repeat: no-repeat;
+
+	margin-top: 2rem;
+}
+
+	.planos__lista{
+		display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: center;
+    width: 100%;
+	}
+
+		.plano{
+			padding: 1.875rem;
+			border-top: 20px solid var(--verde);
+			text-align: center;
+
+			background-color: var(--branco);
+
+			box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+		}
+
+		.plano__preco{
+			font-size: 2.5rem;
+			font-weight: 600;
+		}
+
+		.plano__titulo{
+			font-size: 1.5rem;
+		}
+
+		.plano__descricao{
+			font-size: 1.5rem;
+			font-weight: 800;;
+		}
+
+			.plano__beneficios{
+				display: flex;
+				flex-direction: column;
+				gap: 1.25rem;
+				align-items: flex-start;
+
+				margin-bottom: 1rem;
+				padding: 0;
+			}
+
+				.beneficio{
+					display: flex;
+					flex-direction: row;
+				}
+
+				.beneficio__check{
+					margin-right: 1rem;
+					width: 1.5rem;height: 1.5rem;
+					background-repeat: no-repeat;background-size: cover;
+					content: "";
+				}
+
+				.beneficio #yes{
+					background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/10/yes.png');
+				}
+
+				.beneficio #no{
+					background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/10/no.png');
+				}
+
+		.plano__botao{
+			font-size: 1.5rem;
+			color: var(--branco);
+			background-color: var(--preto);
+			padding:1.25rem;
+			width: 18.75rem;
+		}
+
+.posts{
+	margin-top:2rem;
+	margin-bottom: 7rem;
+}
+
+	.posts .container{
+		justify-content: flex-start;
+	}
+
+	.posts__bg{
+		width: 88%;
+		height: 29.875rem;
+		background-color: var(--verde);
+		border-radius: 10px;
+	}
+
+
+	.posts__info{
+		margin-left: 12%;
+		margin-top: 1rem;
+		width: 100%;
+	}
+
+	
+		.posts__titulo{
+			color: var(--branco);
+			font-size: 3rem;
+			font-weight: 800;
+			margin-bottom: 2rem;
+		}
+
+		.posts__lista{
+			margin: 0;padding: 0;
+			width: 100%;
+			height: 100%;
+
+			display: flex;
+			flex-direction: row;
+			gap: 1.25rem;
+			
+		}
+
+			.post{
+				margin: 0;
+				height: 26.875rem;
+				width: 22.5rem;
+				border-radius: 1rem;
+				background-color: var(--branco);
+				box-shadow: 0 0 1rem rgba(0,0,0,0.25);
+				overflow: hidden;
+
+				display: flex;
+				flex-direction: column;
+			}
+
+				.post__img{
+					background-size: cover;
+					background-position: center;
+					background-repeat: no-repeat;
+
+					height: 18.3125rem;
+					width: 26.875rem;
+					
+				}
+
+				.post__detalhe{
+					width: 3.0625rem;height: 3.5rem;
+					background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/BG.png');
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: contain;
+
+					position: relative;
+					top: calc(100% - 1.75rem);
+			    margin-left: calc(100% - 8.0625rem);
+				}
+
+			.post__info{
+				padding: 2rem; 
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+				justify-content: space-between;
+			}
+
+				.post__categoria{
+					width: fit-content;
+					padding: 12px 6px;
+					color: #9499B3;
+					border: 1px solid #9499B3;
+					border-radius:1rem;
+				}
+
+				.post__titulo{
+					font-size: 1,125rem;
+					color: var(--preto-azulado);
+				}
+
+				.post__link{
+					text-decoration: none;
+					color: var(--verde);
+					font-weight: 800;
+				}
+
+				.post__link:hover{
+					color: var(--preto-azulado);
+				}
+
+					.posts__bullets{
+						width: 100%;
+						display: flex;
+						justify-content: center;
+						gap: 1.25rem;
+						margin-top: 2.0625rem;
+					}
+
+						.posts__bullet{
+							width: 1.8125rem; height: 1.8125rem;
+							background-color: #C4C4C4;
+							border-radius: 100%;
+						}
+
+							.post__bullet-ativo{
+								background-color:var(--verde);
+							}  
+
+.mensagem{
+	margin-top: 18rem;
+	margin-bottom: 7.125rem;
+}
+
+	.mensagem__form{
+		background-color: var(--branco);
+		width: 43.75rem; height: 45.0625rem;
+		box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.25);
+		margin: auto;
+
+		padding: 3.25rem;
+		padding-top: 5.4375rem;
+
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+	}
+
+		.mensagem__header{
+			margin: auto;
+			margin-top: -12rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 3.75rem;
+		}
+
+			.mensagem__header-detail{
+				width: 10.375rem;
+				height: 1.4375rem;
+				background-color: var(--verde);
+			}
+
+			.mensagem__header-img{
+				border-radius: 100%;
+				width:11.9375rem; height: 11.9375rem;
+				object-fit: contain;
+				margin-left: -5rem;
+			}
+
+		.mensagem__titulo{
+			display: flex;
+			flex-direction: row;
+			gap:1.5rem;
+			align-items: center;
+			margin-top: -2.5rem;
+		}
+
+			.mensagem__titulo-icone{
+				width: 3.75rem;	height: 3.75rem;
+				background-color: var(--verde);
+				background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/10/mail.png');
+				background-size: 50%;
+				background-position: center;
+				background-repeat: no-repeat;
+				border-radius: 0.25rem;
+			}
+
+			.mensagem__titulo-texto{
+				font-size:1.5rem;
+				color: var(--preto-azulado);
+				white-space: 8%;
+				font-weight: 400;
+			}
+				.mensagem__titulo-texto span{
+					font-weight: 800;
+				}
+			
+				.mensagem__campo{
+					display: flex;
+					flex-direction: column;
+					gap:0.5rem;
+				}
+
+				.mensagem__campo-metade{
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					gap: 1.25rem;
+				}
+
+					.mensagem__campo-metade .mensagem__campo{
+						width: 100%;
+					}
+
+					.mensagem__label{
+						font-size: 1rem;
+						color: var(--preto-azulado);
+					}
+
+					.mensagem__input{
+						border: 1px solid var(--preto-azulado);
+						color: var(--preto-azulado);
+						padding: 1rem;
+						width: 100%;
+						height:3.125rem;
+						border-radius: 0.25rem;
+					}
+
+					.mensagem__input::placeholder{
+						color: var(--cinza);
+					}
+
+					.mensagem__input-textarea{
+						width: 100%;
+						height: 9.375rem;
+						resize: none;
+					}
+
+					.mensagem__botao{
+						width: 100%;
+						height: 3.25rem;
+						padding: 1rem;
+						text-align: center;
+						content: "SEND NOW";
+						color: var(--branco);
+						font-weight: 800;
+						background-color: var(--verde);
+						border: none;outline: none;
+						border-radius: 0.25rem;
+					}
