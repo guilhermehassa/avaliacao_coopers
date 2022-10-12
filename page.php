@@ -215,7 +215,7 @@ get_header();
 						
 						<div class="mensagem__campo">
 							<label for="tel">Telephone*</label>
-							<input type="tel" class="mensagem__input mensagem__input-tel" id="tel" placeholder="(__)_____-_____">
+							<input type="tel" class="mensagem__input mensagem__input-tel" id="telefone" placeholder="(__)_____-_____" maxlength="15">
 						</div>
 					</div>
 						
@@ -235,3 +235,32 @@ get_header();
 <?php
 get_sidebar();
 get_footer();
+
+?>
+
+<script>
+
+function mascara(o,f){
+	v_obj=o
+	v_fun=f
+	setTimeout("execmascara()",1)
+}
+function execmascara(){
+	v_obj.value=v_fun(v_obj.value)
+}
+function mtel(v){
+	v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
+	v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+	v=v.replace(/(\d)(\d{4})$/,"$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+	return v;
+}
+function id( el ){
+	return document.getElementById( el );
+}
+window.onload = function(){
+	id('telefone').onkeyup = function(){
+		mascara( this, mtel );
+	}
+}
+
+</script>
