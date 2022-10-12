@@ -11,7 +11,7 @@
 
 ?>
 
-	<footer id="colophon" class="footer">
+	<footer class="footer">
 		<div class="container">
 			<p class="footer__texto">
 				Need help?
@@ -24,8 +24,8 @@
 			</span>
 
 			<div class="footer__detail"></div>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+		</div><!-- .container -->
+	</footer><!-- footer -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

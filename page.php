@@ -20,12 +20,12 @@ get_header();
 		<section class="hero">
 			<div class="container">
 				<div>
-					<h1 class="hero__titulo"><strong>Organize</strong><br>your daily jobs</h1>
+					<h1 class="hero__titulo"><strong><?php the_field('principal-titulo') ?></strong><br><?php the_field('principal-subtitulo') ?></h1>
 					<p class="hero__slogan">
-						The only way to get things done.
+						<?php the_field('principal-slogan') ?>
 					</p>
 
-					<button class="hero__botao" onclick="location.href='#todolist'" >Meet the To-do list</button>
+					<button class="hero__botao" onclick="location.href='#todolist'" ><?php the_field('principal-texto_botao') ?></button>
 				</div>
  
 				<img src="https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/02.jpg" class="hero__img">
@@ -39,7 +39,7 @@ get_header();
 				</h2>
 	
 				<p class="todolist__descricao">
-				Choose the right plan for you and get in touch through our contact form. We are here to help.
+					<?php the_field('todolist-descricao') ?>
 				</p>
 			</div>
 		</section>
@@ -49,13 +49,13 @@ get_header();
 				<ul class="planos__lista">
 					<li class="plano">
 						<span class="plano__preco">
-							R$ 20 / mês
+							R$ <?php the_field('plano1-valor') ?> / mês
 						</span>
 						<h3 class="plano__titulo">
-							Basic Plan
+							<?php the_field('plano1-nome') ?>
 						</h3>
 						<p class="plano__descricao">
-							unlimited tasks
+							<?php the_field('plano1-descricao') ?>
 						</p>
 
 						<ul class="plano__beneficios">
@@ -89,13 +89,13 @@ get_header();
 					</li>
 					<li class="plano">
 						<span class="plano__preco">
-							R$ 30 / mês
+							R$ <?php the_field('plano2-valor') ?> / mês
 						</span>
 						<h3 class="plano__titulo">
-							Pro  Plan
+							<?php the_field('plano2-nome') ?>
 						</h3>
 						<p class="plano__descricao">
-							unlimited everything
+							<?php the_field('plano2-descricao') ?>
 						</p>
 
 						<ul class="plano__beneficios">
@@ -139,39 +139,38 @@ get_header();
 						<ul class="posts__lista">
 						
 
-<?php
-	//implementando posts
-	$rand_posts = get_posts('numberposts=5');
-	
+							<?php
+								//implementando posts
+								$rand_posts = get_posts('numberposts=5');
+								
 
-	foreach( $rand_posts as $post ) :
-		$postagem = [
-			"titulo" => get_the_title(),
-			"imagem" => esc_url(wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' )[0]),
-			"categoria" => get_the_category()[0]->cat_name,
-			"link" => get_permalink()
-		];
-		// "link" => esc_html(the_permalink())
-?>
-		<li class='post'>
-			<div class='post__img' style="background-image: url('<?php echo $postagem['imagem'];?>')">
-				<div class='post__detalhe'></div>
-			</div>
-			<div class='post__info'>
-				<h3 class='post__categoria'>
-				<?php echo $postagem['categoria'] ;?>
-				</h3>
-				<p class='post__titulo'>
-				<?php echo $postagem['titulo'];?>
-				</p>
-				<a href="<?php echo esc_html($postagem['link']); ?>" class='post__link'>read more</a>
-			</div>
-		</li>
-		
-<?php		
-		
-	endforeach;
-?>
+							foreach( $rand_posts as $post ) :
+								$postagem = [
+									"titulo" => get_the_title(),
+									"imagem" => esc_url(wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' )[0]),
+									"categoria" => get_the_category()[0]->cat_name,
+									"link" => get_permalink()
+								];
+							?>
+							<li class='post'>
+								<div class='post__img' style="background-image: url('<?php echo $postagem['imagem'];?>')">
+									<div class='post__detalhe'></div>
+								</div>
+								<div class='post__info'>
+									<h3 class='post__categoria'>
+									<?php echo $postagem['categoria'] ;?>
+									</h3>
+									<p class='post__titulo'>
+									<?php echo $postagem['titulo'];?>
+									</p>
+									<a href="<?php echo esc_html($postagem['link']); ?>" class='post__link'>read more</a>
+								</div>
+							</li>
+					
+							<?php		
+									
+								endforeach;
+							?>
 						</ul>
 
 								
@@ -187,6 +186,7 @@ get_header();
 
 			</div>
 		</section>
+
 		<section class="mensagem">
 			<div class="container">
 				
