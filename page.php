@@ -137,84 +137,56 @@ get_header();
 						
 						<h2 class="posts__titulo">good things</h2>
 						<ul class="posts__lista">
-							<li class="post">
-								<div class="post__img" style="background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/001.jpg')">
-									<div class="post__detalhe"></div>
-								</div>
-								<div class="post__info">
-									<h3 class="post__categoria">
-										function
-									</h3>
-									<p class="post__titulo">
-										Organize your daily job enhance your life performance
-									</p>
-									<a href="#" class="post__link">read more</a>
-								</div>
-							</li>
-							<li class="post">
-								<div class="post__img" style="background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/001.jpg')">
-									<div class="post__detalhe"></div>
-								</div>
-								<div class="post__info">
-									<h3 class="post__categoria">
-										function
-									</h3>
-									<p class="post__titulo">
-										Organize your daily job enhance your life performance
-									</p>
-									<a href="#" class="post__link">read more</a>
-								</div>
-							</li>
-							<li class="post">
-								<div class="post__img" style="background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/001.jpg')">
-									<div class="post__detalhe"></div>
-								</div>
-								<div class="post__info">
-									<h3 class="post__categoria">
-										function
-									</h3>
-									<p class="post__titulo">
-										Organize your daily job enhance your life performance
-									</p>
-									<a href="#" class="post__link">read more</a>
-								</div>
-							</li>
+						
+
+<?php
+	//implementando posts
+	$rand_posts = get_posts('numberposts=5');
+	
+
+	foreach( $rand_posts as $post ) :
+		$postagem = [
+			"titulo" => get_the_title(),
+			"imagem" => esc_url(wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' )[0]),
+			"categoria" => get_the_category()[0]->cat_name,
+			"link" => get_permalink()
+		];
+		// "link" => esc_html(the_permalink())
+?>
+		<li class='post'>
+			<div class='post__img' style="background-image: url('<?php echo $postagem['imagem'];?>')">
+				<div class='post__detalhe'></div>
+			</div>
+			<div class='post__info'>
+				<h3 class='post__categoria'>
+				<?php echo $postagem['categoria'] ;?>
+				</h3>
+				<p class='post__titulo'>
+				<?php echo $postagem['titulo'];?>
+				</p>
+				<a href="<?php echo esc_html($postagem['link']); ?>" class='post__link'>read more</a>
+			</div>
+		</li>
+		
+<?php		
+		
+	endforeach;
+?>
 						</ul>
 
-						
+								
 					</div>
 
 					<ul class="posts__bullets">
 						<a href="#" class="posts__bullet post__bullet-ativo"></a>
+						<!-- <a href="#" class="posts__bullet"></a>
 						<a href="#" class="posts__bullet"></a>
-						<a href="#" class="posts__bullet"></a>
-						<a href="#" class="posts__bullet"></a>
+						<a href="#" class="posts__bullet"></a> -->
 					</ul>
 				</div>
-				
+
 			</div>
 		</section>
-
-		<?php
-			//implementando posts
-			$rand_posts = get_posts('numberposts=5');
-			
-
-			foreach( $rand_posts as $post ) :
-
-				$postagem['titulo']=get_the_title();
-				
-				$postagem['imagem'] =  wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' )[0];
-
-				
-				$postagem['categoria'] = get_the_category()[0]->cat_name;
-
-				
-				
-				
-			endforeach;
-		?>
-
 		<section class="mensagem">
 			<div class="container">
 				
