@@ -33,8 +33,9 @@
 
 	<header id="masthead" class="header">
 		<div class="container">
+			<img src="https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/logo.png" class="header__logo" alt="coopers ">
 			<?php
-			the_custom_logo();
+			// the_custom_logo();
 			if ( is_front_page() && is_home() ) :
 				?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>

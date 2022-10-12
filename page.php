@@ -21,18 +21,18 @@ get_header();
 			<div class="container">
 				<div>
 					<h1 class="hero__titulo"><strong>Organize</strong><br>your daily jobs</h1>
-					<p class="hero__descricao">
+					<p class="hero__slogan">
 						The only way to get things done.
 					</p>
 
-					<button class="hero__botao">Meet the To-do list</button>
+					<button class="hero__botao" onclick="location.href='#todolist'" >Meet the To-do list</button>
 				</div>
-
+ 
 				<img src="https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/02.jpg" class="hero__img">
 			</div>
 		</section>
 
-		<section class="todolist">
+		<section class="todolist" id="todolist">
 			<div class="container">
 				<h2 class="todolist__titulo">
 				To-do List

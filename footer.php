@@ -22,6 +22,8 @@
 			<span class="footer__copyright">
 				© 2022 Coopers. All rights reserved.
 			</span>
+
+			<div class="footer__detail"></div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

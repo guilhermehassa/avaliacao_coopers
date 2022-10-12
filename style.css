@@ -77,13 +77,13 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	--fonte-padrao:'Montserrat', sans-serif;
 	--fonte-rodape:'Poppins', sans-serif;
 
-	--altura-header:4rem;
 	--gap-pagina:1rem;
 }
 
 html {
 	line-height: 1.15;
 	-webkit-text-size-adjust: 100%;
+	scroll-behavior: smooth;
 }
 
 /* Sections
@@ -881,7 +881,6 @@ main {
 }
 
 .container{
-	width: 1280px;
 	margin: auto;
 	display: flex;
 	justify-content: space-between;
@@ -894,6 +893,10 @@ main {
 	height: var(--altura-header);
 }
 
+	.header__logo{
+		height: 100%;
+		object-fit: contain;
+	}
 
 /* FOOTER */
 .footer{
@@ -936,13 +939,29 @@ main {
 		font-size: 0.875rem;
 	}
 
+
+.footer__detail{
+	height: 2.5rem;
+	width: 100%;
+	max-width: 32rem;
+	background-color: var(--verde);
+}
+
+.footer__detail::before{
+	width: 100%;
+	height: 1rem;
+	position: absolute;
+	background-color: var(--preto);
+	content: "";
+	left: 0;
+	margin-top: -0.35rem;
+	z-index: 1;
+	transform: rotate(-1deg);
+}
+
 /* ESTILOS DA PÁGINA */
 .hero{
 	width: 100%;
-	height:100vh;
-	max-height: 734px;
-	background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/BG.png');
-	background-size: contain;
 	background-position: right center;
 	background-repeat: no-repeat;
 
@@ -968,39 +987,37 @@ main {
 	}
 
 	.hero__botao{
-		width: 18.75rem;
+		
 		height: 4rem;
 		border-radius: 0.625rem;
 
 		background-color: var(--verde);
 		color: var(--branco);
+		border: none;outline: none;
+
+		font-size: 1.5rem;font-weight: 600;
 	}
 
 	.hero__img{
-		height: 482px;
-		width: 443px;
+		
 		object-fit: contain;
 	}
 
 .todolist{
 	color: var(--branco);
+	transform: rotate(-3deg);
+	background-color:var(--preto);
+	margin-left: -10vw;margin-top: -1rem;
+	width:120vw;
+	padding:5rem;
 }
 
-.todolist::before{
-	width: 110vw;
-	height: 18rem;
-	position: absolute;
-	background-color:var(--preto);
-	content: "";
-	margin-top: -1rem;
-	margin-left: -1vw;
-	z-index: -1;
-	transform: rotate(-3deg);
-	
-}
+
 
 	.todolist .container{
 		flex-direction: column;
+		transform: rotate(3deg);
+		align-content:center;
 	}
 
 	.todolist__titulo{
@@ -1010,6 +1027,7 @@ main {
 		text-decoration: underline 2px solid var(--verde);
 
 		text-align: center;
+		margin:auto;
 	}
 
 	.todolist__descricao{
@@ -1021,22 +1039,23 @@ main {
 
 .planos{
 	background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/grafismos-lateral-esquerda.png');
-	background-size: contain;
+	
 	background-position: left center;
-	background-repeat: no-repeat;
+	
 
 	margin-top: 2rem;
 }
 
 	.planos__lista{
 		display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
-    justify-content: center;
-    width: 100%;
+    	gap: 1.5rem;
+    	justify-content: center;
+    	width: 100%;
+		margin:0;padding:0;
 	}
 
 		.plano{
+			width:20.625rem;
 			padding: 1.875rem;
 			border-top: 20px solid var(--verde);
 			text-align: center;
@@ -1053,11 +1072,15 @@ main {
 
 		.plano__titulo{
 			font-size: 1.5rem;
+			font-weight: 200;
+			margin: 0;
 		}
 
 		.plano__descricao{
 			font-size: 1.5rem;
-			font-weight: 800;;
+			font-weight: 800;
+			margin: 0;
+			margin-bottom: 1rem;
 		}
 
 			.plano__beneficios{
@@ -1095,12 +1118,12 @@ main {
 			color: var(--branco);
 			background-color: var(--preto);
 			padding:1.25rem;
-			width: 18.75rem;
+			width: 100%;
+			border:none;outline:none;
 		}
 
 .posts{
 	margin-top:2rem;
-	margin-bottom: 7rem;
 }
 
 	.posts .container{
@@ -1109,7 +1132,6 @@ main {
 
 	.posts__bg{
 		width: 88%;
-		height: 29.875rem;
 		background-color: var(--verde);
 		border-radius: 10px;
 	}
@@ -1131,11 +1153,11 @@ main {
 
 		.posts__lista{
 			margin: 0;padding: 0;
-			width: 100%;
+			
 			height: 100%;
 
 			display: flex;
-			flex-direction: row;
+			
 			gap: 1.25rem;
 			
 		}
@@ -1143,7 +1165,7 @@ main {
 			.post{
 				margin: 0;
 				height: 26.875rem;
-				width: 22.5rem;
+				
 				border-radius: 1rem;
 				background-color: var(--branco);
 				box-shadow: 0 0 1rem rgba(0,0,0,0.25);
@@ -1185,10 +1207,12 @@ main {
 
 				.post__categoria{
 					width: fit-content;
-					padding: 12px 6px;
+					padding: 0.375rem 0.75rem;
 					color: #9499B3;
 					border: 1px solid #9499B3;
-					border-radius:1rem;
+					border-radius:2rem;
+					font-weight: 200;
+
 				}
 
 				.post__titulo{
@@ -1206,37 +1230,34 @@ main {
 					color: var(--preto-azulado);
 				}
 
-					.posts__bullets{
-						width: 100%;
-						display: flex;
-						justify-content: center;
-						gap: 1.25rem;
-						margin-top: 2.0625rem;
-					}
+		.posts__bullets{
+			width: 100%;
+			justify-content: center;
+			gap: 1.25rem;
+			margin-top: 2.0625rem;
+		}
 
-						.posts__bullet{
-							width: 1.8125rem; height: 1.8125rem;
-							background-color: #C4C4C4;
-							border-radius: 100%;
-						}
+			.posts__bullet{
+				width: 1.8125rem; height: 1.8125rem;
+				background-color: #C4C4C4;
+				border-radius: 100%;
+			}
 
-							.post__bullet-ativo{
-								background-color:var(--verde);
-							}  
+				.post__bullet-ativo{
+					background-color:var(--verde);
+				}  
 
 .mensagem{
-	margin-top: 18rem;
 	margin-bottom: 7.125rem;
 }
 
 	.mensagem__form{
-		background-color: var(--branco);
-		width: 43.75rem; height: 45.0625rem;
+		background-color: var(--branco); 
 		box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.25);
 		margin: auto;
 
-		padding: 3.25rem;
-		padding-top: 5.4375rem;
+		height: fit-content;
+		
 
 		display: flex;
 		flex-direction: column;
@@ -1245,7 +1266,7 @@ main {
 
 		.mensagem__header{
 			margin: auto;
-			margin-top: -12rem;
+			margin-top: -6rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -1270,7 +1291,6 @@ main {
 			flex-direction: row;
 			gap:1.5rem;
 			align-items: center;
-			margin-top: -2.5rem;
 		}
 
 			.mensagem__titulo-icone{
@@ -1301,9 +1321,7 @@ main {
 
 				.mensagem__campo-metade{
 					display: flex;
-					flex-direction: row;
 					justify-content: space-between;
-					gap: 1.25rem;
 				}
 
 					.mensagem__campo-metade .mensagem__campo{
@@ -1346,3 +1364,246 @@ main {
 						border: none;outline: none;
 						border-radius: 0.25rem;
 					}
+
+/* MOBILE */
+@media screen and (min-width:0){
+	*{
+		--altura-header:4rem;
+	}
+
+  .container{
+		width:100%;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+	}
+
+	.header__logo{
+		margin: auto;
+	}
+
+	.hero{
+		height: fit-content;
+	}
+
+	.hero__img{
+		height: 80vw;
+	}
+
+	.hero__slogan{
+		text-align: center;
+	}
+
+	
+
+	.hero__botao{
+		width: 100%
+	}
+	
+	.todolist__descricao{
+		width:100%;
+	}
+	
+	.planos__lista{
+   	 	flex-direction: column;
+	}
+
+	.planos{
+		background-size: auto;
+		background-repeat: repeat-y;
+	}
+	
+	.plano{
+			width:100%;
+	}
+
+	.posts .container{
+		align-items: baseline;
+	}
+
+	.posts__titulo{
+		max-width: 80%;
+	}
+
+	.post{
+		width: 80vw
+	}
+
+	.posts__lista{
+		flex-direction: column;
+	}
+	
+	.posts__bg{
+		height: fit-content;
+	}
+
+	.posts__bullets{
+		display: none;
+	}
+
+	.mensagem{
+		margin-top: 6rem;
+	}
+
+	.mensagem__form{
+		width: 100%;
+
+		padding: 1rem;
+		padding-top: 5.4375rem;
+	}
+
+	.mensagem__campo-metade{
+		flex-direction: column;
+		gap: 2.5rem;
+	}
+	
+}/* MOBILE - FIM */
+
+
+/* TABLET */
+@media screen and (min-width: 768px){
+  .container{
+		flex-direction: row;
+		gap: inherit;
+		align-items: flex-start;
+		justify-content: space-around;
+	}
+
+	.hero{
+		height: 40vh;
+	}
+
+	.hero__img{
+		height: 20rem;
+	}
+
+	.planos__lista{
+		flex-direction: row;
+	}
+
+	.posts__lista{
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.post{
+		width: 22.5rem;
+	}
+}/* TABLET - FIM */
+
+
+/* 1024 */
+@media screen and (min-width: 1024px){
+  *{
+		--altura-header:4rem;
+	}
+	
+	.header__logo{
+		margin: 0;
+	}
+
+	
+
+	.hero{
+		height:100vh;
+		max-height: 734px;
+
+		background-size: 50%;
+
+		background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/BG.png');
+	}
+
+	.hero__img{
+		height: 30rem;
+	}
+
+	.hero__slogan{
+		text-align: inherit;
+	}
+
+	.hero__botao{
+		width: 18.75rem
+	}
+	
+	
+	.todolist__descricao{
+		width: 37.5rem;
+	}
+
+	.planos{
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	
+	.plano{
+			width:20.625rem;
+	}
+
+	.posts{
+		margin-bottom: 7rem;
+	}
+
+	.posts__lista{
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+
+	.posts .container{
+		align-items: inherit;
+	}
+
+	.posts__titulo{
+		max-width: inherit;
+	}
+
+	.post{
+		width: 22.5rem;
+	}
+
+	.posts__lista{
+		flex-direction: row;
+	}
+
+	.posts__bg{
+		height: 29.875rem;
+	}
+
+	.posts__bullets{
+		display: flex;
+	}
+
+	.mensagem{
+		margin-top: 10rem;
+	}
+
+	.mensagem__form{
+		width: 43.75rem;
+		padding: 3.25rem;
+		padding-top: 5.4375rem;
+	}
+
+	.mensagem__titulo{
+		margin-top: -2.5rem;
+	}
+
+	.mensagem__campo-metade{
+		flex-direction: row;
+		
+		gap: 1.25rem;
+	}
+}/* 1024 - FIM */
+
+
+/* 1200 */
+@media screen and (min-width: 1200px){
+	.hero{
+
+		background-size: contain;
+
+
+		background-image: url('https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/BG.png');
+	}
+  .container{
+		width: 1280px;
+	}
+}/* 1200 - FIM */
