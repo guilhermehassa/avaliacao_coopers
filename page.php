@@ -27,8 +27,10 @@ get_header();
 
 					<button class="hero__botao" onclick="location.href='#todolist'" ><?php the_field('principal-texto_botao') ?></button>
 				</div>
- 
-				<img src="https://simple.tec.br/front-coopers/wp-content/uploads/2022/09/02.jpg" class="hero__img">
+				<?php if( get_field('principal_imagem') ): ?>
+					<img src="<?php the_field('principal_imagem'); ?>" class="hero__img">
+				<?php endif; ?>
+				
 			</div>
 		</section>
 
@@ -59,28 +61,34 @@ get_header();
 						</p>
 
 						<ul class="plano__beneficios">
-							<li class="beneficio">
-								<div class="beneficio__check" id="yes">
-
-								</div>
-								Create to-do lists
-							</li>
-							<li class="beneficio">
-								<div class="beneficio__check" id="yes"></div>
-								Share lists via WhatsApp
-							</li>
-							<li class="beneficio">
-								<div class="beneficio__check" id="no"></div>
-								Offline mode
-							</li>
-							<li class="beneficio">
-								<div class="beneficio__check" id="no"></div>
-								Invite colaborators
-							</li>
-							<li class="beneficio">
-								<div class="beneficio__check" id="no"></div>
-								Dark mode
-							</li>
+							<?php
+								$selecionados = get_field('plano1-beneficios');
+								$opcoes = get_field_object('plano1-beneficios');
+								
+								foreach($opcoes['choices'] as $opcao_legenda => $opcao_valor){ ?>
+								<li class="beneficio">
+									<?php
+									$selecionado=false;
+										foreach($selecionados as $selecionado_valor => $selecionado_legenda){
+											if($opcao_legenda == $selecionado_legenda){
+												$selecionado=true;
+											}
+										}
+										if($selecionado){
+											echo'<div class="beneficio__check" id="yes"></div>';
+										}
+										else{
+											echo '<div class="beneficio__check" id="no"></div>';
+										}
+										echo $opcao_valor;
+									?>
+									
+								</li>	
+								<?php	
+								}
+							
+							?>
+							
 						</ul>
 
 						<button class="plano__botao">
@@ -98,27 +106,37 @@ get_header();
 							<?php the_field('plano2-descricao') ?>
 						</p>
 
+
+
 						<ul class="plano__beneficios">
-							<li class="beneficio">
-								<div class="beneficio__check" id="yes"></div>
-								Create to-do lists
-							</li>
-							<li class="beneficio">
-								<div class="beneficio__check" id="yes"></div>
-								Share lists via WhatsApp
-							</li>
-							<li class="beneficio">
-								<div class="beneficio__check" id="yes"></div>
-								Offline mode
-							</li>
-							<li class="beneficio">
-								<div class="beneficio__check" id="yes"></div>
-								Invite colaborators
-							</li>
-							<li class="beneficio">
-								<div class="beneficio__check" id="yes"></div>
-								Dark mode
-							</li>
+							<?php
+								$selecionados = get_field('plano2-beneficios');
+								$opcoes = get_field_object('plano2-beneficios');
+								
+								foreach($opcoes['choices'] as $opcao_legenda => $opcao_valor){ ?>
+								<li class="beneficio">
+									<?php
+									$selecionado=false;
+										foreach($selecionados as $selecionado_valor => $selecionado_legenda){
+											if($opcao_legenda == $selecionado_legenda){
+												$selecionado=true;
+											}
+										}
+										if($selecionado){
+											echo'<div class="beneficio__check" id="yes"></div>';
+										}
+										else{
+											echo '<div class="beneficio__check" id="no"></div>';
+										}
+										echo $opcao_valor;
+									?>
+									
+								</li>	
+								<?php	
+								}
+							
+							?>
+							
 						</ul>
 
 						<button class="plano__botao">
@@ -136,52 +154,50 @@ get_header();
 					<div class="posts__info">
 						
 						<h2 class="posts__titulo">good things</h2>
-						<ul class="posts__lista">
-						
-
-							<?php
-								//implementando posts
-								$rand_posts = get_posts('numberposts=5');
-								
-
-							foreach( $rand_posts as $post ) :
-								$postagem = [
-									"titulo" => get_the_title(),
-									"imagem" => esc_url(wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' )[0]),
-									"categoria" => get_the_category()[0]->cat_name,
-									"link" => get_permalink()
-								];
-							?>
-							<li class='post'>
-								<div class='post__img' style="background-image: url('<?php echo $postagem['imagem'];?>')">
-									<div class='post__detalhe'></div>
-								</div>
-								<div class='post__info'>
-									<h3 class='post__categoria'>
-									<?php echo $postagem['categoria'] ;?>
-									</h3>
-									<p class='post__titulo'>
-									<?php echo $postagem['titulo'];?>
-									</p>
-									<a href="<?php echo esc_html($postagem['link']); ?>" class='post__link'>read more</a>
-								</div>
-							</li>
-					
-							<?php		
+						<div class="posts__container">
+							<ul class="posts__lista">
+							
+	
+								<?php
+									//implementando posts
+									$rand_posts = get_posts('numberposts=5');
 									
-								endforeach;
-							?>
-						</ul>
+	
+								foreach( $rand_posts as $post ) :
+									$postagem = [
+										"titulo" => get_the_title(),
+										"imagem" => esc_url(wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' )[0]),
+										"categoria" => get_the_category()[0]->cat_name,
+										"link" => get_permalink()
+									];
+								?>
+								<li class='post'>
+									<div class='post__img' style="background-image: url('<?php echo $postagem['imagem'];?>')">
+										<div class='post__detalhe'></div>
+									</div>
+									<div class='post__info'>
+										<h3 class='post__categoria'>
+										<?php echo $postagem['categoria'] ;?>
+										</h3>
+										<p class='post__titulo'>
+										<?php echo $postagem['titulo'];?>
+										</p>
+										<a href="<?php echo esc_html($postagem['link']); ?>" class='post__link'>read more</a>
+									</div>
+								</li>
+						
+								<?php		
+										
+									endforeach;
+								?>
+							</ul>
+						</div>
 
 								
 					</div>
 
 					<ul class="posts__bullets">
-						<a href="#" class="posts__bullet post__bullet-ativo"></a>
-						<!-- <a href="#" class="posts__bullet"></a>
-						<a href="#" class="posts__bullet"></a>
-						<a href="#" class="posts__bullet"></a> -->
-					</ul>
+						<button href="#" class="posts__bullet post__bullet-ativo"></button>
 				</div>
 
 			</div>

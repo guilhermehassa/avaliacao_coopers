@@ -1199,7 +1199,6 @@ main {
 
 
 	.posts__info{
-		margin-left: 12%;
 		margin-top: 1rem;
 		width: 100%;
 	}
@@ -1212,18 +1211,18 @@ main {
 			margin-bottom: 2rem;
 		}
 
+		.posts__container::-webkit-scrollbar{
+			display: none;
+		}
+
 		.posts__lista{
 			margin: 0;padding: 0;
-			
-			height: 100%;
 
 			display: -webkit-box;
 
 			display: -ms-flexbox;
 
 			display: flex;
-			
-			gap: 1.25rem;
 			
 		}
 
@@ -1318,13 +1317,14 @@ main {
 			    -ms-flex-pack: center;
 			        justify-content: center;
 			gap: 1.25rem;
-			margin-top: 2.0625rem;
 		}
 
 			.posts__bullet{
 				width: 1.8125rem; height: 1.8125rem;
 				background-color: #C4C4C4;
 				border-radius: 100%;
+				border: none;
+				outline: none;
 			}
 
 				.post__bullet-ativo{
@@ -1570,6 +1570,21 @@ main {
 		        align-items: baseline;
 	}
 
+	.posts__container{
+		width: 100vw;
+		margin-left: calc(-12% - 1rem);
+		overflow-x:scroll;
+	}
+
+	.posts__lista{
+		width: fit-content;
+		flex-direction: row;
+    gap: 10vw;
+    padding:2rem 10vw;
+			
+		height: 100%;
+	}
+
 	.posts__titulo{
 		max-width: 80%;
 	}
@@ -1577,18 +1592,15 @@ main {
 	.post{
 		width: 80vw
 	}
-
-	.posts__lista{
-		-webkit-box-orient: vertical;
-		-webkit-box-direction: normal;
-		    -ms-flex-direction: column;
-		        flex-direction: column;
-	}
 	
 	.posts__bg{
 		height: -webkit-fit-content;
 		height: -moz-fit-content;
 		height: fit-content;
+	}
+
+	.posts__info{
+		margin-left: 12%;
 	}
 
 	.posts__bullets{
@@ -1648,12 +1660,8 @@ main {
 	}
 
 	.posts__lista{
-		-webkit-box-orient: horizontal;
-		-webkit-box-direction: normal;
-		    -ms-flex-direction: row;
-		        flex-direction: row;
-		-ms-flex-wrap: wrap;
-		    flex-wrap: wrap;
+
+				height: 30rem;
 	}
 
 	.post{
@@ -1753,6 +1761,23 @@ main {
 		display: flex;
 	}
 
+	.posts__info{
+		margin-left: 5%;
+	}
+
+	.posts__container{
+		width:100% ;
+		margin-left: 0;
+		overflow: inherit;
+	}
+	
+	.posts__lista{
+		gap: 1.25rem;
+		padding: 0;
+	}
+
+	
+
 	.mensagem{
 		margin-top: 10rem;
 	}
@@ -1789,5 +1814,9 @@ main {
 	}
   .container{
 		width: 1280px;
+	}
+
+	.posts__info{
+		margin-left: 10%;
 	}
 }/* 1200 - FIM */
